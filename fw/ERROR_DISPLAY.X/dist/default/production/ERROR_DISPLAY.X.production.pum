@@ -1,0 +1,18 @@
+
+Psect Usage Map:
+
+ Psect      | Contents                         | Memory Range  | Size
+------------|----------------------------------|---------------|-------------
+            |                                  |               |             
+ end_init   | Initialization code              | 0000h - 0004h |   5 words  
+ maintext   | Program code for main() function | 02BFh - 03F7h | 313 words  
+ cinit      | Initialization code              | 03F8h - 03FEh |   7 words  
+------------|----------------------------------|---------------|-------------
+ bssBANK0   | BSS variables in bank 0          | 0020h - 0024h |   5 bytes  
+ cstackBANK | Stack in bank 0                  | 0025h - 0025h |   1 byte   
+            |                                  |               |             
+ abs_s1     | Absolute RAM variables           | 005Eh - 005Fh |   2 bytes  
+------------|----------------------------------|---------------|-------------
+ config     |                                  | 2007h - 2007h |   1 word   
+------------|----------------------------------|---------------|-------------
+

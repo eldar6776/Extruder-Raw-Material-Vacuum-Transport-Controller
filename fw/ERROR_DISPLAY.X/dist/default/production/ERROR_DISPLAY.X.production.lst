@@ -1,0 +1,829 @@
+
+
+Microchip Technology PIC LITE Macro Assembler V1.33 build 59893 
+                                                                                               Thu May 17 03:46:37 2018
+
+Microchip Technology Omniscient Code Generator (Lite mode) build 59893
+     1                           	processor	12F675
+     2                           	opt	pw 120
+     3                           	opt	lm
+     4                           	psect	maintext,global,class=CODE,split=1,delta=2
+     5                           	psect	cinit,global,class=CODE,merge=1,delta=2
+     6                           	psect	bssBANK0,global,class=BANK0,space=1,delta=1
+     7                           	psect	cstackBANK0,global,class=BANK0,space=1,delta=1
+     8                           	dabs	1,0x5E,2
+     9  0000                     	;# 
+    10  0001                     	;# 
+    11  0002                     	;# 
+    12  0003                     	;# 
+    13  0004                     	;# 
+    14  0005                     	;# 
+    15  000A                     	;# 
+    16  000B                     	;# 
+    17  000C                     	;# 
+    18  000E                     	;# 
+    19  000E                     	;# 
+    20  000F                     	;# 
+    21  0010                     	;# 
+    22  0019                     	;# 
+    23  001E                     	;# 
+    24  001F                     	;# 
+    25  0081                     	;# 
+    26  0085                     	;# 
+    27  008C                     	;# 
+    28  008E                     	;# 
+    29  0090                     	;# 
+    30  0095                     	;# 
+    31  0096                     	;# 
+    32  0096                     	;# 
+    33  0099                     	;# 
+    34  009A                     	;# 
+    35  009A                     	;# 
+    36  009B                     	;# 
+    37  009C                     	;# 
+    38  009D                     	;# 
+    39  009E                     	;# 
+    40  009F                     	;# 
+    41  0019                     _CMCON	set	25
+    42  0005                     _GPIO	set	5
+    43  0001                     _TMR0	set	1
+    44  0028                     _GPIO0	set	40
+    45  0029                     _GPIO1	set	41
+    46  002A                     _GPIO2	set	42
+    47  002B                     _GPIO3	set	43
+    48  002C                     _GPIO4	set	44
+    49  002D                     _GPIO5	set	45
+    50  009F                     _ANSEL	set	159
+    51  0081                     _OPTION_REG	set	129
+    52  0085                     _TRISIO	set	133
+    53                           
+    54                           	psect	maintext
+    55  02BF                     __pmaintext:	
+    56                           ; #config settings
+    57                           
+    58                           
+    59                           ;psect for function _main
+    60  0000                     
+    61 ;;
+    62 ;;Main: autosize = 0, tempsize = 1, incstack = 0, save=0
+    63 ;;
+    64 ;; *************** function _main *****************
+    65 ;; Defined at:
+    66 ;;		line 118 in file "main.c"
+    67 ;; Parameters:    Size  Location     Type
+    68 ;;		None
+    69 ;; Auto vars:     Size  Location     Type
+    70 ;;		None
+    71 ;; Return value:  Size  Location     Type
+    72 ;;		None               void
+    73 ;; Registers used:
+    74 ;;		wreg, status,2, status,0
+    75 ;; Tracked objects:
+    76 ;;		On entry : 17F/0
+    77 ;;		On exit  : 0/0
+    78 ;;		Unchanged: 0/0
+    79 ;; Data sizes:     COMMON   BANK0
+    80 ;;      Params:         0       0
+    81 ;;      Locals:         0       0
+    82 ;;      Temps:          0       1
+    83 ;;      Totals:         0       1
+    84 ;;Total ram usage:        1 bytes
+    85 ;; This function calls:
+    86 ;;		Nothing
+    87 ;; This function is called by:
+    88 ;;		Startup code after reset
+    89 ;; This function uses a non-reentrant model
+    90 ;;
+    91  02BF                     _main:	
+    92                           
+    93                           ;main.c: 120: (CMCON = 0x07, ANSEL = 0x00, TRISIO = 0b00001000, GPIO = 0x00);
+    94                           
+    95                           ;incstack = 0
+    96                           ; Regs used in _main: [wreg+status,2+status,0]
+    97  02BF  3007               	movlw	7
+    98  02C0  1283               	bcf	3,5	;RP0=0, select bank0
+    99  02C1  0099               	movwf	25	;volatile
+   100  02C2  1683               	bsf	3,5	;RP0=1, select bank1
+   101  02C3  019F               	clrf	31	;volatile
+   102  02C4  3008               	movlw	8
+   103  02C5  0085               	movwf	5	;volatile
+   104  02C6  1283               	bcf	3,5	;RP0=0, select bank0
+   105  02C7  0185               	clrf	5	;volatile
+   106                           
+   107                           ;main.c: 121: (OPTION_REG = 0x87, TMR0 = 0);
+   108  02C8  3087               	movlw	135
+   109  02C9  1683               	bsf	3,5	;RP0=1, select bank1
+   110  02CA  0081               	movwf	1	;volatile
+   111  02CB  1283               	bcf	3,5	;RP0=0, select bank0
+   112  02CC  0181               	clrf	1	;volatile
+   113                           
+   114                           ;main.c: 122: GPIO5 = 0;
+   115  02CD  1285               	bcf	5,5	;volatile
+   116                           
+   117                           ;main.c: 123: shift_data.b7 = 1;
+   118  02CE  17A2               	bsf	_shift_data,7
+   119  02CF                     l748:	
+   120                           ;main.c: 125: while (1) {
+   121                           
+   122                           
+   123                           ;main.c: 127: if (!TMR0) {
+   124  02CF  0801               	movf	1,w	;volatile
+   125  02D0  1D03               	skipz
+   126  02D1  2ACF               	goto	l748
+   127                           
+   128                           ;main.c: 128: TMR0 = 236;
+   129  02D2  30EC               	movlw	236
+   130  02D3  0081               	movwf	1	;volatile
+   131                           
+   132                           ;main.c: 129: mux_input._byte = 0;
+   133  02D4  01A1               	clrf	_mux_input
+   134                           
+   135                           ;main.c: 130: (GPIO0 = 1, GPIO1 = 1, GPIO2 = 1);
+   136  02D5  1405               	bsf	5,0	;volatile
+   137  02D6  1485               	bsf	5,1	;volatile
+   138  02D7  1505               	bsf	5,2	;volatile
+   139                           
+   140                           ;main.c: 131: _delay((unsigned long)((5)*(4000000/4000000.0)));
+   141  02D8  2AD9               	nop2	;2 cycle nop
+   142  02D9  2ADA               	nop2	;2 cycle nop
+   143  02DA  0000               	nop
+   144                           
+   145                           ;main.c: 132: if (!GPIO3) mux_input.b0 = 1;
+   146  02DB  1283               	bcf	3,5	;RP0=0, select bank0
+   147  02DC  1D85               	btfss	5,3	;volatile
+   148  02DD  1421               	bsf	_mux_input,0
+   149                           
+   150                           ;main.c: 133: (GPIO0 = 0, GPIO1 = 1, GPIO2 = 1);
+   151  02DE  1005               	bcf	5,0	;volatile
+   152  02DF  1485               	bsf	5,1	;volatile
+   153  02E0  1505               	bsf	5,2	;volatile
+   154                           
+   155                           ;main.c: 134: _delay((unsigned long)((5)*(4000000/4000000.0)));
+   156  02E1  2AE2               	nop2	;2 cycle nop
+   157  02E2  2AE3               	nop2	;2 cycle nop
+   158  02E3  0000               	nop
+   159                           
+   160                           ;main.c: 135: if (!GPIO3) mux_input.b1 = 1;
+   161  02E4  1283               	bcf	3,5	;RP0=0, select bank0
+   162  02E5  1D85               	btfss	5,3	;volatile
+   163  02E6  14A1               	bsf	_mux_input,1
+   164                           
+   165                           ;main.c: 136: (GPIO0 = 1, GPIO1 = 0, GPIO2 = 1);
+   166  02E7  1405               	bsf	5,0	;volatile
+   167  02E8  1085               	bcf	5,1	;volatile
+   168  02E9  1505               	bsf	5,2	;volatile
+   169                           
+   170                           ;main.c: 137: _delay((unsigned long)((5)*(4000000/4000000.0)));
+   171  02EA  2AEB               	nop2	;2 cycle nop
+   172  02EB  2AEC               	nop2	;2 cycle nop
+   173  02EC  0000               	nop
+   174                           
+   175                           ;main.c: 138: if (!GPIO3) mux_input.b2 = 1;
+   176  02ED  1283               	bcf	3,5	;RP0=0, select bank0
+   177  02EE  1D85               	btfss	5,3	;volatile
+   178  02EF  1521               	bsf	_mux_input,2
+   179                           
+   180                           ;main.c: 139: (GPIO0 = 0, GPIO1 = 0, GPIO2 = 1);
+   181  02F0  1005               	bcf	5,0	;volatile
+   182  02F1  1085               	bcf	5,1	;volatile
+   183  02F2  1505               	bsf	5,2	;volatile
+   184                           
+   185                           ;main.c: 140: _delay((unsigned long)((5)*(4000000/4000000.0)));
+   186  02F3  2AF4               	nop2	;2 cycle nop
+   187  02F4  2AF5               	nop2	;2 cycle nop
+   188  02F5  0000               	nop
+   189                           
+   190                           ;main.c: 141: if (!GPIO3) mux_input.b3 = 1;
+   191  02F6  1283               	bcf	3,5	;RP0=0, select bank0
+   192  02F7  1D85               	btfss	5,3	;volatile
+   193  02F8  15A1               	bsf	_mux_input,3
+   194                           
+   195                           ;main.c: 142: (GPIO0 = 1, GPIO1 = 1, GPIO2 = 0);
+   196  02F9  1405               	bsf	5,0	;volatile
+   197  02FA  1485               	bsf	5,1	;volatile
+   198  02FB  1105               	bcf	5,2	;volatile
+   199                           
+   200                           ;main.c: 143: _delay((unsigned long)((5)*(4000000/4000000.0)));
+   201  02FC  2AFD               	nop2	;2 cycle nop
+   202  02FD  2AFE               	nop2	;2 cycle nop
+   203  02FE  0000               	nop
+   204                           
+   205                           ;main.c: 144: if (!GPIO3) mux_input.b4 = 1;
+   206  02FF  1283               	bcf	3,5	;RP0=0, select bank0
+   207  0300  1D85               	btfss	5,3	;volatile
+   208  0301  1621               	bsf	_mux_input,4
+   209                           
+   210                           ;main.c: 145: (GPIO0 = 0, GPIO1 = 1, GPIO2 = 0);
+   211  0302  1005               	bcf	5,0	;volatile
+   212  0303  1485               	bsf	5,1	;volatile
+   213  0304  1105               	bcf	5,2	;volatile
+   214                           
+   215                           ;main.c: 146: _delay((unsigned long)((5)*(4000000/4000000.0)));
+   216  0305  2B06               	nop2	;2 cycle nop
+   217  0306  2B07               	nop2	;2 cycle nop
+   218  0307  0000               	nop
+   219                           
+   220                           ;main.c: 147: if (!GPIO3) mux_input.b5 = 1;
+   221  0308  1283               	bcf	3,5	;RP0=0, select bank0
+   222  0309  1D85               	btfss	5,3	;volatile
+   223  030A  16A1               	bsf	_mux_input,5
+   224                           
+   225                           ;main.c: 148: (GPIO0 = 1, GPIO1 = 0, GPIO2 = 0);
+   226  030B  1405               	bsf	5,0	;volatile
+   227  030C  1085               	bcf	5,1	;volatile
+   228  030D  1105               	bcf	5,2	;volatile
+   229                           
+   230                           ;main.c: 149: _delay((unsigned long)((5)*(4000000/4000000.0)));
+   231  030E  2B0F               	nop2	;2 cycle nop
+   232  030F  2B10               	nop2	;2 cycle nop
+   233  0310  0000               	nop
+   234                           
+   235                           ;main.c: 150: if (!GPIO3) mux_input.b6 = 1;
+   236  0311  1283               	bcf	3,5	;RP0=0, select bank0
+   237  0312  1D85               	btfss	5,3	;volatile
+   238  0313  1721               	bsf	_mux_input,6
+   239                           
+   240                           ;main.c: 151: (GPIO0 = 0, GPIO1 = 0, GPIO2 = 0);
+   241  0314  1005               	bcf	5,0	;volatile
+   242  0315  1085               	bcf	5,1	;volatile
+   243  0316  1105               	bcf	5,2	;volatile
+   244                           
+   245                           ;main.c: 152: _delay((unsigned long)((5)*(4000000/4000000.0)));
+   246  0317  2B18               	nop2	;2 cycle nop
+   247  0318  2B19               	nop2	;2 cycle nop
+   248  0319  0000               	nop
+   249                           
+   250                           ;main.c: 153: if (!GPIO3) mux_input.b7 = 1;
+   251  031A  1283               	bcf	3,5	;RP0=0, select bank0
+   252  031B  1D85               	btfss	5,3	;volatile
+   253  031C  17A1               	bsf	_mux_input,7
+   254                           
+   255                           ;main.c: 154: GPIO0 = 0;
+   256  031D  1005               	bcf	5,0	;volatile
+   257                           
+   258                           ;main.c: 155: GPIO1 = 0;
+   259  031E  1085               	bcf	5,1	;volatile
+   260                           
+   261                           ;main.c: 156: GPIO2 = 0;
+   262  031F  1105               	bcf	5,2	;volatile
+   263                           
+   264                           ;main.c: 157: GPIO4 = 0;
+   265  0320  1205               	bcf	5,4	;volatile
+   266                           
+   267                           ;main.c: 158: shift_data._byte = 0;
+   268  0321  01A2               	clrf	_shift_data
+   269                           
+   270                           ;main.c: 159: digit = 0;
+   271  0322  01A0               	clrf	_digit
+   272                           
+   273                           ;main.c: 160: if (GPIO5 == 1) {
+   274  0323  1E85               	btfss	5,5	;volatile
+   275  0324  2B3A               	goto	l49
+   276                           
+   277                           ;main.c: 161: if (mux_input.b4) digit += 1;
+   278  0325  1E21               	btfss	_mux_input,4
+   279  0326  2B2B               	goto	l788
+   280  0327  3001               	movlw	1
+   281  0328  00A5               	movwf	??_main
+   282  0329  0825               	movf	??_main,w
+   283  032A  07A0               	addwf	_digit,f
+   284  032B                     l788:	
+   285                           
+   286                           ;main.c: 162: if (mux_input.b5) digit += 2;
+   287  032B  1EA1               	btfss	_mux_input,5
+   288  032C  2B31               	goto	l792
+   289  032D  3002               	movlw	2
+   290  032E  00A5               	movwf	??_main
+   291  032F  0825               	movf	??_main,w
+   292  0330  07A0               	addwf	_digit,f
+   293  0331                     l792:	
+   294                           
+   295                           ;main.c: 163: if (mux_input.b6) digit += 4;
+   296  0331  1F21               	btfss	_mux_input,6
+   297  0332  2B37               	goto	l796
+   298  0333  3004               	movlw	4
+   299  0334  00A5               	movwf	??_main
+   300  0335  0825               	movf	??_main,w
+   301  0336  07A0               	addwf	_digit,f
+   302  0337                     l796:	
+   303                           
+   304                           ;main.c: 164: if (mux_input.b7) digit += 8;
+   305  0337  1FA1               	btfss	_mux_input,7
+   306  0338  2B52               	goto	l814
+   307  0339  2B4E               	goto	l812
+   308  033A                     l49:	
+   309                           ;main.c: 165: } else {
+   310                           
+   311                           
+   312                           ;main.c: 166: if (mux_input.b0) digit += 1;
+   313  033A  1C21               	btfss	_mux_input,0
+   314  033B  2B40               	goto	l802
+   315  033C  3001               	movlw	1
+   316  033D  00A5               	movwf	??_main
+   317  033E  0825               	movf	??_main,w
+   318  033F  07A0               	addwf	_digit,f
+   319  0340                     l802:	
+   320                           
+   321                           ;main.c: 167: if (mux_input.b1) digit += 2;
+   322  0340  1CA1               	btfss	_mux_input,1
+   323  0341  2B46               	goto	l806
+   324  0342  3002               	movlw	2
+   325  0343  00A5               	movwf	??_main
+   326  0344  0825               	movf	??_main,w
+   327  0345  07A0               	addwf	_digit,f
+   328  0346                     l806:	
+   329                           
+   330                           ;main.c: 168: if (mux_input.b2) digit += 4;
+   331  0346  1D21               	btfss	_mux_input,2
+   332  0347  2B4C               	goto	l810
+   333  0348  3004               	movlw	4
+   334  0349  00A5               	movwf	??_main
+   335  034A  0825               	movf	??_main,w
+   336  034B  07A0               	addwf	_digit,f
+   337  034C                     l810:	
+   338                           
+   339                           ;main.c: 169: if (mux_input.b3) digit += 8;
+   340  034C  1DA1               	btfss	_mux_input,3
+   341  034D  2B52               	goto	l814
+   342  034E                     l812:	
+   343  034E  3008               	movlw	8
+   344  034F  00A5               	movwf	??_main
+   345  0350  0825               	movf	??_main,w
+   346  0351  07A0               	addwf	_digit,f
+   347  0352                     l814:	
+   348                           
+   349                           ;main.c: 170: }
+   350                           ;main.c: 171: if (digit == 0) shift_data._byte = (0b00111111);
+   351  0352  08A0               	movf	_digit,f
+   352  0353  1D03               	skipz
+   353  0354  2B57               	goto	l818
+   354  0355  303F               	movlw	63
+   355  0356  2BB0               	goto	L15
+   356  0357                     l818:	
+   357                           
+   358                           ;main.c: 172: else if (digit == 1) shift_data._byte = (0b00000110);
+   359  0357  0820               	movf	_digit,w
+   360  0358  3A01               	xorlw	1
+   361  0359  1D03               	skipz
+   362  035A  2B5D               	goto	l822
+   363  035B  3006               	movlw	6
+   364  035C  2BB0               	goto	L15
+   365  035D                     l822:	
+   366                           
+   367                           ;main.c: 173: else if (digit == 2) shift_data._byte = (0b01011011);
+   368  035D  0820               	movf	_digit,w
+   369  035E  3A02               	xorlw	2
+   370  035F  1D03               	skipz
+   371  0360  2B63               	goto	l826
+   372  0361  305B               	movlw	91
+   373  0362  2BB0               	goto	L15
+   374  0363                     l826:	
+   375                           
+   376                           ;main.c: 174: else if (digit == 3) shift_data._byte = (0b01001111);
+   377  0363  0820               	movf	_digit,w
+   378  0364  3A03               	xorlw	3
+   379  0365  1D03               	skipz
+   380  0366  2B69               	goto	l830
+   381  0367  304F               	movlw	79
+   382  0368  2BB0               	goto	L15
+   383  0369                     l830:	
+   384                           
+   385                           ;main.c: 175: else if (digit == 4) shift_data._byte = (0b01100110);
+   386  0369  0820               	movf	_digit,w
+   387  036A  3A04               	xorlw	4
+   388  036B  1D03               	skipz
+   389  036C  2B6F               	goto	l834
+   390  036D  3066               	movlw	102
+   391  036E  2BB0               	goto	L15
+   392  036F                     l834:	
+   393                           
+   394                           ;main.c: 176: else if (digit == 5) shift_data._byte = (0b01101101);
+   395  036F  0820               	movf	_digit,w
+   396  0370  3A05               	xorlw	5
+   397  0371  1D03               	skipz
+   398  0372  2B75               	goto	l838
+   399  0373  306D               	movlw	109
+   400  0374  2BB0               	goto	L15
+   401  0375                     l838:	
+   402                           
+   403                           ;main.c: 177: else if (digit == 6) shift_data._byte = (0b01111101);
+   404  0375  0820               	movf	_digit,w
+   405  0376  3A06               	xorlw	6
+   406  0377  1D03               	skipz
+   407  0378  2B7B               	goto	l842
+   408  0379  307D               	movlw	125
+   409  037A  2BB0               	goto	L15
+   410  037B                     l842:	
+   411                           
+   412                           ;main.c: 178: else if (digit == 7) shift_data._byte = (0b00000111);
+   413  037B  0820               	movf	_digit,w
+   414  037C  3A07               	xorlw	7
+   415  037D  1D03               	skipz
+   416  037E  2B81               	goto	l846
+   417  037F  3007               	movlw	7
+   418  0380  2BB0               	goto	L15
+   419  0381                     l846:	
+   420                           
+   421                           ;main.c: 179: else if (digit == 8) shift_data._byte = (0b01111111);
+   422  0381  0820               	movf	_digit,w
+   423  0382  3A08               	xorlw	8
+   424  0383  1D03               	skipz
+   425  0384  2B87               	goto	l850
+   426  0385  307F               	movlw	127
+   427  0386  2BB0               	goto	L15
+   428  0387                     l850:	
+   429                           
+   430                           ;main.c: 180: else if (digit == 9) shift_data._byte = (0b01101111);
+   431  0387  0820               	movf	_digit,w
+   432  0388  3A09               	xorlw	9
+   433  0389  1D03               	skipz
+   434  038A  2B8D               	goto	l854
+   435  038B  306F               	movlw	111
+   436  038C  2BB0               	goto	L15
+   437  038D                     l854:	
+   438                           
+   439                           ;main.c: 181: else if (digit == 10) shift_data._byte = (0b01110111);
+   440  038D  0820               	movf	_digit,w
+   441  038E  3A0A               	xorlw	10
+   442  038F  1D03               	skipz
+   443  0390  2B93               	goto	l858
+   444  0391  3077               	movlw	119
+   445  0392  2BB0               	goto	L15
+   446  0393                     l858:	
+   447                           
+   448                           ;main.c: 182: else if (digit == 11) shift_data._byte = (0b01111100);
+   449  0393  0820               	movf	_digit,w
+   450  0394  3A0B               	xorlw	11
+   451  0395  1D03               	skipz
+   452  0396  2B99               	goto	l862
+   453  0397  307C               	movlw	124
+   454  0398  2BB0               	goto	L15
+   455  0399                     l862:	
+   456                           
+   457                           ;main.c: 183: else if (digit == 12) shift_data._byte = (0b00111001);
+   458  0399  0820               	movf	_digit,w
+   459  039A  3A0C               	xorlw	12
+   460  039B  1D03               	skipz
+   461  039C  2B9F               	goto	l866
+   462  039D  3039               	movlw	57
+   463  039E  2BB0               	goto	L15
+   464  039F                     l866:	
+   465                           
+   466                           ;main.c: 184: else if (digit == 13) shift_data._byte = (0b01011110);
+   467  039F  0820               	movf	_digit,w
+   468  03A0  3A0D               	xorlw	13
+   469  03A1  1D03               	skipz
+   470  03A2  2BA5               	goto	l870
+   471  03A3  305E               	movlw	94
+   472  03A4  2BB0               	goto	L15
+   473  03A5                     l870:	
+   474                           
+   475                           ;main.c: 185: else if (digit == 14) shift_data._byte = (0b01111001);
+   476  03A5  0820               	movf	_digit,w
+   477  03A6  3A0E               	xorlw	14
+   478  03A7  1D03               	skipz
+   479  03A8  2BAB               	goto	l874
+   480  03A9  3079               	movlw	121
+   481  03AA  2BB0               	goto	L15
+   482  03AB                     l874:	
+   483                           
+   484                           ;main.c: 186: else if (digit == 15) shift_data._byte = (0b01110001);
+   485  03AB  0820               	movf	_digit,w
+   486  03AC  3A0F               	xorlw	15
+   487  03AD  1D03               	skipz
+   488  03AE  2BB3               	goto	l878
+   489  03AF  3071               	movlw	113
+   490  03B0                     L15:	
+   491  03B0  00A5               	movwf	??_main
+   492  03B1  0825               	movf	??_main,w
+   493  03B2  00A2               	movwf	_shift_data
+   494  03B3                     l878:	
+   495                           
+   496                           ;main.c: 187: if(GPIO5 == 1){
+   497  03B3  1E85               	btfss	5,5	;volatile
+   498  03B4  2BB8               	goto	l90
+   499                           
+   500                           ;main.c: 188: GPIO5 = 0;
+   501  03B5  1285               	bcf	5,5	;volatile
+   502                           
+   503                           ;main.c: 189: shift_data.b7 = 1;
+   504  03B6  17A2               	bsf	_shift_data,7
+   505                           
+   506                           ;main.c: 190: } else {
+   507  03B7  2BB9               	goto	l91
+   508  03B8                     l90:	
+   509                           
+   510                           ;main.c: 191: shift_data.b7 = 0;
+   511  03B8  13A2               	bcf	_shift_data,7
+   512  03B9                     l91:	
+   513                           
+   514                           ;main.c: 192: }
+   515                           ;main.c: 193: if(shift_data.b7) GPIO1 = 1;
+   516  03B9  1FA2               	btfss	_shift_data,7
+   517  03BA  2BBD               	goto	l92
+   518  03BB  1485               	bsf	5,1	;volatile
+   519  03BC  2BBE               	goto	l93
+   520  03BD                     l92:	
+   521                           
+   522                           ;main.c: 194: else GPIO1 = 0;
+   523  03BD  1085               	bcf	5,1	;volatile
+   524  03BE                     l93:	
+   525                           
+   526                           ;main.c: 195: GPIO0 = 1;
+   527  03BE  1405               	bsf	5,0	;volatile
+   528                           
+   529                           ;main.c: 196: GPIO0 = 0;
+   530  03BF  1005               	bcf	5,0	;volatile
+   531                           
+   532                           ;main.c: 197: if(shift_data.b6) GPIO1 = 1;
+   533  03C0  1F22               	btfss	_shift_data,6
+   534  03C1  2BC4               	goto	l94
+   535  03C2  1485               	bsf	5,1	;volatile
+   536  03C3  2BC5               	goto	l95
+   537  03C4                     l94:	
+   538                           
+   539                           ;main.c: 198: else GPIO1 = 0;
+   540  03C4  1085               	bcf	5,1	;volatile
+   541  03C5                     l95:	
+   542                           
+   543                           ;main.c: 199: GPIO0 = 1;
+   544  03C5  1405               	bsf	5,0	;volatile
+   545                           
+   546                           ;main.c: 200: GPIO0 = 0;
+   547  03C6  1005               	bcf	5,0	;volatile
+   548                           
+   549                           ;main.c: 201: if(shift_data.b5) GPIO1 = 1;
+   550  03C7  1EA2               	btfss	_shift_data,5
+   551  03C8  2BCB               	goto	l96
+   552  03C9  1485               	bsf	5,1	;volatile
+   553  03CA  2BCC               	goto	l97
+   554  03CB                     l96:	
+   555                           
+   556                           ;main.c: 202: else GPIO1 = 0;
+   557  03CB  1085               	bcf	5,1	;volatile
+   558  03CC                     l97:	
+   559                           
+   560                           ;main.c: 203: GPIO0 = 1;
+   561  03CC  1405               	bsf	5,0	;volatile
+   562                           
+   563                           ;main.c: 204: GPIO0 = 0;
+   564  03CD  1005               	bcf	5,0	;volatile
+   565                           
+   566                           ;main.c: 205: if(shift_data.b4) GPIO1 = 1;
+   567  03CE  1E22               	btfss	_shift_data,4
+   568  03CF  2BD2               	goto	l98
+   569  03D0  1485               	bsf	5,1	;volatile
+   570  03D1  2BD3               	goto	l99
+   571  03D2                     l98:	
+   572                           
+   573                           ;main.c: 206: else GPIO1 = 0;
+   574  03D2  1085               	bcf	5,1	;volatile
+   575  03D3                     l99:	
+   576                           
+   577                           ;main.c: 207: GPIO0 = 1;
+   578  03D3  1405               	bsf	5,0	;volatile
+   579                           
+   580                           ;main.c: 208: GPIO0 = 0;
+   581  03D4  1005               	bcf	5,0	;volatile
+   582                           
+   583                           ;main.c: 209: if(shift_data.b3) GPIO1 = 1;
+   584  03D5  1DA2               	btfss	_shift_data,3
+   585  03D6  2BD9               	goto	l100
+   586  03D7  1485               	bsf	5,1	;volatile
+   587  03D8  2BDA               	goto	l101
+   588  03D9                     l100:	
+   589                           
+   590                           ;main.c: 210: else GPIO1 = 0;
+   591  03D9  1085               	bcf	5,1	;volatile
+   592  03DA                     l101:	
+   593                           
+   594                           ;main.c: 211: GPIO0 = 1;
+   595  03DA  1405               	bsf	5,0	;volatile
+   596                           
+   597                           ;main.c: 212: GPIO0 = 0;
+   598  03DB  1005               	bcf	5,0	;volatile
+   599                           
+   600                           ;main.c: 213: if(shift_data.b2) GPIO1 = 1;
+   601  03DC  1D22               	btfss	_shift_data,2
+   602  03DD  2BE0               	goto	l102
+   603  03DE  1485               	bsf	5,1	;volatile
+   604  03DF  2BE1               	goto	l103
+   605  03E0                     l102:	
+   606                           
+   607                           ;main.c: 214: else GPIO1 = 0;
+   608  03E0  1085               	bcf	5,1	;volatile
+   609  03E1                     l103:	
+   610                           
+   611                           ;main.c: 215: GPIO0 = 1;
+   612  03E1  1405               	bsf	5,0	;volatile
+   613                           
+   614                           ;main.c: 216: GPIO0 = 0;
+   615  03E2  1005               	bcf	5,0	;volatile
+   616                           
+   617                           ;main.c: 217: if(shift_data.b1) GPIO1 = 1;
+   618  03E3  1CA2               	btfss	_shift_data,1
+   619  03E4  2BE7               	goto	l104
+   620  03E5  1485               	bsf	5,1	;volatile
+   621  03E6  2BE8               	goto	l105
+   622  03E7                     l104:	
+   623                           
+   624                           ;main.c: 218: else GPIO1 = 0;
+   625  03E7  1085               	bcf	5,1	;volatile
+   626  03E8                     l105:	
+   627                           
+   628                           ;main.c: 219: GPIO0 = 1;
+   629  03E8  1405               	bsf	5,0	;volatile
+   630                           
+   631                           ;main.c: 220: GPIO0 = 0;
+   632  03E9  1005               	bcf	5,0	;volatile
+   633                           
+   634                           ;main.c: 221: if(shift_data.b0) GPIO1 = 1;
+   635  03EA  1C22               	btfss	_shift_data,0
+   636  03EB  2BEE               	goto	l106
+   637  03EC  1485               	bsf	5,1	;volatile
+   638  03ED  2BEF               	goto	l107
+   639  03EE                     l106:	
+   640                           
+   641                           ;main.c: 222: else GPIO1 = 0;
+   642  03EE  1085               	bcf	5,1	;volatile
+   643  03EF                     l107:	
+   644                           
+   645                           ;main.c: 223: GPIO0 = 1;
+   646  03EF  1405               	bsf	5,0	;volatile
+   647                           
+   648                           ;main.c: 224: GPIO0 = 0;
+   649  03F0  1005               	bcf	5,0	;volatile
+   650                           
+   651                           ;main.c: 225: GPIO4 = 1;
+   652  03F1  1605               	bsf	5,4	;volatile
+   653                           
+   654                           ;main.c: 226: GPIO4 = 0;
+   655  03F2  1205               	bcf	5,4	;volatile
+   656                           
+   657                           ;main.c: 227: GPIO1 = 0;
+   658  03F3  1085               	bcf	5,1	;volatile
+   659                           
+   660                           ;main.c: 228: if(GPIO5 == 0) GPIO5 = 1;
+   661  03F4  1A85               	btfsc	5,5	;volatile
+   662  03F5  2ACF               	goto	l748
+   663  03F6  1685               	bsf	5,5	;volatile
+   664  03F7  2ACF               	goto	l748
+   665  03F8                     __end_of_main:	
+   666  005E                     btemp	set	94	;btemp
+   667  005E                     wtemp	set	94
+   668  005E                     wtemp0	set	94
+   669  0060                     wtemp1	set	96
+   670  0062                     wtemp2	set	98
+   671  0064                     wtemp3	set	100
+   672  0066                     wtemp4	set	102
+   673  0068                     wtemp5	set	104
+   674  005F                     wtemp6	set	95
+   675  005E                     ttemp	set	94
+   676  005E                     ttemp0	set	94
+   677  0061                     ttemp1	set	97
+   678  0064                     ttemp2	set	100
+   679  0067                     ttemp3	set	103
+   680  005F                     ttemp4	set	95
+   681  005E                     ltemp	set	94
+   682  005E                     ltemp0	set	94
+   683  0062                     ltemp1	set	98
+   684  0066                     ltemp2	set	102
+   685  0060                     ltemp3	set	96
+   686                           
+   687                           	psect	cinit
+   688  03F8                     start_initialization:	
+   689  03F8                     __initialization:	
+   690                           
+   691                           ; Clear objects allocated to BANK0
+   692  03F8  01A0               	clrf	__pbssBANK0& (0+127)
+   693  03F9  01A1               	clrf	(__pbssBANK0+1)& (0+127)
+   694  03FA  01A2               	clrf	(__pbssBANK0+2)& (0+127)
+   695  03FB  01A3               	clrf	(__pbssBANK0+3)& (0+127)
+   696  03FC  01A4               	clrf	(__pbssBANK0+4)& (0+127)
+   697  03FD                     end_of_initialization:	
+   698                           ;End of C runtime variable initialization code
+   699                           
+   700  03FD                     __end_of__initialization:	
+   701  03FD  0183               	clrf	3
+   702  03FE  2ABF               	ljmp	_main	;jump to C main() function
+   703                           
+   704                           	psect	bssBANK0
+   705  0020                     __pbssBANK0:	
+   706  0020                     _digit:	
+   707  0020                     	ds	1
+   708  0021                     _mux_input:	
+   709  0021                     	ds	1
+   710  0022                     _shift_data:	
+   711  0022                     	ds	1
+   712  0023                     _tmp_cnt:	
+   713  0023                     	ds	1
+   714  0024                     _tmr_cnt:	
+   715  0024                     	ds	1
+   716                           
+   717                           	psect	cstackBANK0
+   718  0025                     __pcstackBANK0:	
+   719  0025                     ?_main:	
+   720  0025                     ??_main:	
+   721                           ; 0 bytes @ 0x0
+   722                           
+   723                           
+   724                           ; 0 bytes @ 0x0
+   725  0025                     	ds	1
+
+
+Data Sizes:
+    Strings     0
+    Constant    0
+    Data        0
+    BSS         5
+    Persistent  0
+    Stack       0
+
+Auto Spaces:
+    Space          Size  Autos    Used
+    COMMON            0      0       0
+    BANK0            62      1       6
+
+Pointer List with Targets:
+
+    None.
+
+Critical Paths under _main in COMMON
+
+    None.
+
+Critical Paths under _main in BANK0
+
+    None.
+
+Call Graph Tables:
+
+ ---------------------------------------------------------------------------------
+ (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+ ---------------------------------------------------------------------------------
+ (0) _main                                                 1     1      0       0
+                                              0 BANK0      1     1      0
+ ---------------------------------------------------------------------------------
+ Estimated maximum stack depth 0
+ ---------------------------------------------------------------------------------
+
+ Call Graph Graphs:
+
+ _main (ROOT)
+
+ Address spaces:
+Name               Size   Autos  Total    Cost      Usage
+BITCOMMON            0      0       0       0        0.0%
+EEDATA              80      0       0       0        0.0%
+NULL                 0      0       0       0        0.0%
+CODE                 0      0       0       0        0.0%
+BITSFR0              0      0       0       1        0.0%
+SFR0                 0      0       0       1        0.0%
+COMMON               0      0       0       1        0.0%
+BITSFR1              0      0       0       2        0.0%
+SFR1                 0      0       0       2        0.0%
+STACK                0      0       0       2        0.0%
+BITBANK0            3E      0       0       3        0.0%
+BANK0               3E      1       6       4        9.7%
+ABS                  0      0       6       5        0.0%
+DATA                 0      0       6       6        0.0%
+
+
+Microchip Technology PIC Macro Assembler V1.33 build 59893 
+Symbol Table                                                                                   Thu May 17 03:46:37 2018
+
+            __CFG_CP$OFF 0000                       l49 033A                       l90 03B8  
+                     l91 03B9                       l92 03BD                       l93 03BE  
+                     l94 03C4                       l95 03C5                       l96 03CB  
+                     l97 03CC                       l98 03D2                       l99 03D3  
+                    l100 03D9                      l101 03DA                      l102 03E0  
+                    l103 03E1                      l104 03E7                      l105 03E8  
+                    l106 03EE                      l107 03EF                      l810 034C  
+                    l802 0340                      l812 034E                      l830 0369  
+                    l822 035D                      l806 0346                      l814 0352  
+                    l850 0387                      l842 037B                      l834 036F  
+                    l826 0363                      l818 0357                      l748 02CF  
+                    l870 03A5                      l862 0399                      l854 038D  
+                    l846 0381                      l838 0375                      l792 0331  
+                    l874 03AB                      l866 039F                      l858 0393  
+                    l796 0337                      l788 032B                      l878 03B3  
+           __CFG_CPD$OFF 0000                     _GPIO 0005                     _TMR0 0001  
+                   _main 02BF                     btemp 005E            __CFG_BOREN$ON 0000  
+                   ltemp 005E                     start 0000                     ttemp 005E  
+                   wtemp 005E                    ?_main 0025            __CFG_WDTE$OFF 0000  
+                  _CMCON 0019                    _ANSEL 009F                    _GPIO0 0028  
+                  _GPIO1 0029                    _GPIO2 002A                    _GPIO3 002B  
+                  _GPIO4 002C                    _GPIO5 002D            __CFG_PWRTE$ON 0000  
+                  _digit 0020                    ltemp0 005E                    ltemp1 0062  
+                  ltemp2 0066                    ltemp3 0060                    ttemp0 005E  
+                  ttemp1 0061                    ttemp2 0064                    ttemp3 0067  
+                  ttemp4 005F                    status 0003                    wtemp0 005E  
+                  wtemp1 0060                    wtemp2 0062                    wtemp3 0064  
+                  wtemp4 0066                    wtemp5 0068                    wtemp6 005F  
+         __CFG_MCLRE$OFF 0000          __initialization 03F8             __end_of_main 03F8  
+                 ??_main 0025                   _TRISIO 0085  __end_of__initialization 03FD  
+             __pbssBANK0 0020               __pmaintext 02BF                  _tmp_cnt 0023  
+                _tmr_cnt 0024     end_of_initialization 03FD               _shift_data 0022  
+    start_initialization 03F8                ___latbits 0000            __pcstackBANK0 0025  
+              _mux_input 0021            __size_of_main 0139               _OPTION_REG 0081  
+      __CFG_FOSC$INTRCIO 0000  

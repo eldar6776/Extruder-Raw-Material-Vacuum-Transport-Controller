@@ -1,0 +1,619 @@
+[p LITE_MODE AUTOSTATIC PIC14 PIC14E ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip 16F1517 ]
+[d frameptr 6 ]
+"142 C:\Users\eldar\Desktop\LINIJA 5 Transport materijala\fw\v1.02_controller_radna\KONTROLER_TRANSPORTA.X\trans_ctrl.h
+[e E2108 timers `uc
+VP1_TMR 0
+MILL_SHUTDOWN_DELAY_TMR 1
+PISTON_TMR 2
+MAX_CHARGING_TMR 3
+ERROR_DISPLAY_TMR 4
+FEEDER4_CHARGING_TMR 5
+FEEDER2_CLEANING_PISTON_TMR 6
+FEEDER_STATE_CHANGE_TMR 7
+VP1_CONTROL_DELAY_TMR 8
+FEEDER1_CONTROL_DELAY_TMR 9
+FEEDER2_CONTROL_DELAY_TMR 10
+FEEDER3_CONTROL_DELAY_TMR 11
+FEEDER4_CONTROL_DELAY_TMR 12
+FEEDER5_CONTROL_DELAY_TMR 13
+FEEDER_COEX_CONTROL_DELAY_TMR 14
+]
+"146
+[e E2125 vacum_pump1_states `uc
+VP1_OFF 0
+VP1_START 1
+VP1_RUN 2
+VP1_IDLE 3
+VP1_ERROR 4
+]
+"150
+[e E2132 activ_units `uc
+FEEDER1 0
+FEEDER2 1
+FEEDER3 2
+FEEDER4 3
+FEEDER5 4
+FEEDER_COEX 5
+VACUM_PUMP1 6
+]
+"154
+[e E2141 feeder1_states `uc
+FEEDER1_OFF 0
+FEEDER1_DISCHARGING 1
+FEEDER1_CHARGING 2
+FEEDER1_ERROR 3
+]
+"158
+[e E2147 feeder2_states `uc
+FEEDER2_OFF 0
+FEEDER2_DISCHARGING 1
+FEEDER2_CHARGING 2
+FEEDER2_ERROR 3
+]
+"162
+[e E2153 feeder3_states `uc
+FEEDER3_OFF 0
+FEEDER3_DISCHARGING 1
+FEEDER3_CHARGING 2
+FEEDER3_ERROR 3
+]
+"166
+[e E2159 feeder4_states `uc
+FEEDER4_OFF 0
+FEEDER4_DISCHARGING 1
+FEEDER4_CHARGING 2
+FEEDER4_ERROR 3
+]
+"170
+[e E2165 feeder5_states `uc
+FEEDER5_OFF 0
+FEEDER5_DISCHARGING 1
+FEEDER5_CHARGING 2
+FEEDER5_ERROR 3
+]
+"174
+[e E2171 feeder_coex_states `uc
+FEEDER_COEX_OFF 0
+FEEDER_COEX_DISCHARGING 1
+FEEDER_COEX_CHARGING 2
+FEEDER_COEX_ERROR 3
+]
+"4 C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\abdiv.c
+[v ___abdiv __abdiv `(c  1 e 1 0 ]
+"4 C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\abmod.c
+[v ___abmod __abmod `(c  1 e 1 0 ]
+"33 C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\abtoft.c
+[v ___abtoft __abtoft `(f  1 e 3 0 ]
+"6 C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\aldiv.c
+[v ___aldiv __aldiv `(l  1 e 4 0 ]
+"5 C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\almod.c
+[v ___almod __almod `(l  1 e 4 0 ]
+"42 C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\altoft.c
+[v ___altoft __altoft `(f  1 e 3 0 ]
+"6 C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\atdiv.c
+[v ___atdiv __atdiv `(m  1 e 3 0 ]
+"6 C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\atmod.c
+[v ___atmod __atmod `(m  1 e 3 0 ]
+"37 C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\attoft.c
+[v ___attoft __attoft `(f  1 e 3 0 ]
+"6 C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awdiv.c
+[v ___awdiv __awdiv `(i  1 e 2 0 ]
+"6 C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awmod.c
+[v ___awmod __awmod `(i  1 e 2 0 ]
+"32 C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awtoft.c
+[v ___awtoft __awtoft `(f  1 e 3 0 ]
+"62 C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\float.c
+[v ___ftpack __ftpack `(f  1 e 3 0 ]
+"86 C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\ftadd.c
+[v ___ftadd __ftadd `(f  1 e 3 0 ]
+"4 C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\ftge.c
+[v ___ftge __ftge `(b  1 e 0 0 ]
+"62 C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\ftmul.c
+[v ___ftmul __ftmul `(f  1 e 3 0 ]
+"15 C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\ftneg.c
+[v ___ftneg __ftneg `(f  1 e 3 0 ]
+"18 C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\ftsub.c
+[v ___ftsub __ftsub `(f  1 e 3 0 ]
+"44 C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\fttol.c
+[v ___fttol __fttol `(l  1 e 4 0 ]
+"4 C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\lbdiv.c
+[v ___lbdiv __lbdiv `(uc  1 e 1 0 ]
+"4 C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\lbmod.c
+[v ___lbmod __lbmod `(uc  1 e 1 0 ]
+"27 C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\lbtoft.c
+[v ___lbtoft __lbtoft `(f  1 e 3 0 ]
+"6 C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\lldiv.c
+[v ___lldiv __lldiv `(ul  1 e 4 0 ]
+"6 C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\llmod.c
+[v ___llmod __llmod `(ul  1 e 4 0 ]
+"35 C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\lltoft.c
+[v ___lltoft __lltoft `(f  1 e 3 0 ]
+"6 C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\ltdiv.c
+[v ___ltdiv __ltdiv `(um  1 e 3 0 ]
+"6 C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\ltmod.c
+[v ___ltmod __ltmod `(um  1 e 3 0 ]
+"30 C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\lttoft.c
+[v ___lttoft __lttoft `(f  1 e 3 0 ]
+"6 C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\lwdiv.c
+[v ___lwdiv __lwdiv `(ui  1 e 2 0 ]
+"6 C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\lwmod.c
+[v ___lwmod __lwmod `(ui  1 e 2 0 ]
+"28 C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\lwtoft.c
+[v ___lwtoft __lwtoft `(f  1 e 3 0 ]
+"15 C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\Umul16.c
+[v ___wmul __wmul `(ui  1 e 2 0 ]
+"15 C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\Umul24.c
+[v ___tmul __tmul `(um  1 e 3 0 ]
+"15 C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\Umul32.c
+[v ___lmul __lmul `(ul  1 e 4 0 ]
+"4 C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\Umul8.c
+[v ___bmul __bmul `(uc  1 e 1 0 ]
+"49 C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic\ftdiv.c
+[v ___ftdiv __ftdiv `(f  1 e 3 0 ]
+"32 C:\Users\eldar\Desktop\LINIJA 5 Transport materijala\fw\v1.02_controller_radna\KONTROLER_TRANSPORTA.X\delay.c
+[v _DelayBigUs DelayBigUs `(v  1 e 0 0 ]
+"44
+[v _DelayMs DelayMs `(v  1 e 0 0 ]
+"57
+[v _DelayMs_interrupt DelayMs_interrupt `(v  1 e 0 0 ]
+"67
+[v _DelayBigMs DelayBigMs `(v  1 e 0 0 ]
+"78
+[v _DelayS DelayS `(v  1 e 0 0 ]
+"37 C:\Users\eldar\Desktop\LINIJA 5 Transport materijala\fw\v1.02_controller_radna\KONTROLER_TRANSPORTA.X\trans_ctrl.c
+[v _timer_int timer_int `II(v  1 e 0 0 ]
+"92
+[v _main main `(v  1 e 0 0 ]
+"118
+[v _InitRAM InitRAM `(v  1 e 0 0 ]
+"135
+[v _InitSYS InitSYS `(v  1 e 0 0 ]
+"166
+[v _CheckTimer CheckTimer `(v  1 e 0 0 ]
+"249
+[v _CheckDigitalInput CheckDigitalInput `(v  1 e 0 0 ]
+"316
+[v _CheckAnalogInput CheckAnalogInput `(v  1 e 0 0 ]
+"404
+[v _SetRelayOutput SetRelayOutput `(v  1 e 0 0 ]
+"428
+[v _SetAnalogOutput SetAnalogOutput `(v  1 e 0 0 ]
+"446
+[v _SetSignalOutput SetSignalOutput `(v  1 e 0 0 ]
+"847
+[v _SetTimer SetTimer `(v  1 e 0 0 ]
+"930
+[v _HC595_Shift HC595_Shift `(v  1 e 0 0 ]
+[v i1_HC595_Shift HC595_Shift `(v  1 e 0 0 ]
+"961
+[v _CheckSafety CheckSafety `(v  1 e 0 0 ]
+"1003
+[v _ProcessFeeder1 ProcessFeeder1 `(v  1 e 0 0 ]
+"1079
+[v _ProcessFeeder2 ProcessFeeder2 `(v  1 e 0 0 ]
+"1174
+[v _ProcessFeeder3 ProcessFeeder3 `(v  1 e 0 0 ]
+"1250
+[v _ProcessFeeder4 ProcessFeeder4 `(v  1 e 0 0 ]
+"1323
+[v _ProcessFeeder5 ProcessFeeder5 `(v  1 e 0 0 ]
+"1399
+[v _ProcessFeederCoex ProcessFeederCoex `(v  1 e 0 0 ]
+"1475
+[v _ProcessCyclon1 ProcessCyclon1 `(v  1 e 0 0 ]
+"1492
+[v _ProcessVacumPump1 ProcessVacumPump1 `(v  1 e 0 0 ]
+"595 C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f1517.h
+[v _PORTD PORTD `VEuc  1 e 1 @15 ]
+"812
+[v _TMR1L TMR1L `VEuc  1 e 1 @22 ]
+"831
+[v _TMR1H TMR1H `VEuc  1 e 1 @23 ]
+"850
+[v _T1CON T1CON `VEuc  1 e 1 @24 ]
+"1009
+[v _PR2 PR2 `VEuc  1 e 1 @27 ]
+"1028
+[v _T2CON T2CON `VEuc  1 e 1 @28 ]
+"1098
+[v _TRISA TRISA `VEuc  1 e 1 @140 ]
+"1159
+[v _TRISB TRISB `VEuc  1 e 1 @141 ]
+"1220
+[v _TRISC TRISC `VEuc  1 e 1 @142 ]
+"1281
+[v _TRISD TRISD `VEuc  1 e 1 @143 ]
+"1342
+[v _TRISE TRISE `VEuc  1 e 1 @144 ]
+"1788
+[v _ADRESL ADRESL `VEuc  1 e 1 @155 ]
+"1807
+[v _ADRESH ADRESH `VEuc  1 e 1 @156 ]
+"1826
+[v _ADCON0 ADCON0 `VEuc  1 e 1 @157 ]
+"1905
+[v _ADCON1 ADCON1 `VEuc  1 e 1 @158 ]
+"1970
+[v _LATA LATA `VEuc  1 e 1 @268 ]
+"2031
+[v _LATB LATB `VEuc  1 e 1 @269 ]
+"2092
+[v _LATC LATC `VEuc  1 e 1 @270 ]
+"2222
+[v _LATE LATE `VEuc  1 e 1 @272 ]
+"2285
+[v _FVRCON FVRCON `VEuc  1 e 1 @279 ]
+"2368
+[v _ANSELA ANSELA `VEuc  1 e 1 @396 ]
+"2420
+[v _ANSELB ANSELB `VEuc  1 e 1 @397 ]
+"2477
+[v _ANSELC ANSELC `VEuc  1 e 1 @398 ]
+"2538
+[v _ANSELD ANSELD `VEuc  1 e 1 @399 ]
+"2607
+[v _ANSELE ANSELE `VEuc  1 e 1 @400 ]
+"3907
+[v _CCPR1L CCPR1L `VEuc  1 e 1 @657 ]
+"3945
+[v _CCP1CON CCP1CON `VEuc  1 e 1 @659 ]
+"4014
+[v _CCPR2L CCPR2L `VEuc  1 e 1 @664 ]
+"4052
+[v _CCP2CON CCP2CON `VEuc  1 e 1 @666 ]
+"4727
+[v _DC1B0 DC1B0 `VEb  1 e 0 @5276 ]
+"4729
+[v _DC1B1 DC1B1 `VEb  1 e 0 @5277 ]
+"4731
+[v _DC2B0 DC2B0 `VEb  1 e 0 @5332 ]
+"4733
+[v _DC2B1 DC2B1 `VEb  1 e 0 @5333 ]
+"4751
+[v _GIE GIE `VEb  1 e 0 @95 ]
+"4755
+[v _GO_nDONE GO_nDONE `VEb  1 e 0 @1257 ]
+"4911
+[v _PEIE PEIE `VEb  1 e 0 @94 ]
+"4931
+[v _RA4 RA4 `VEb  1 e 0 @100 ]
+"4941
+[v _RB1 RB1 `VEb  1 e 0 @105 ]
+"4943
+[v _RB2 RB2 `VEb  1 e 0 @106 ]
+"4949
+[v _RB5 RB5 `VEb  1 e 0 @109 ]
+"4961
+[v _RC3 RC3 `VEb  1 e 0 @115 ]
+"4963
+[v _RC4 RC4 `VEb  1 e 0 @116 ]
+"4965
+[v _RC5 RC5 `VEb  1 e 0 @117 ]
+"5001
+[v _RE2 RE2 `VEb  1 e 0 @130 ]
+"5125
+[v _TMR1IE TMR1IE `VEb  1 e 0 @1160 ]
+"5127
+[v _TMR1IF TMR1IF `VEb  1 e 0 @136 ]
+"28 C:\Users\eldar\Desktop\LINIJA 5 Transport materijala\fw\v1.02_controller_radna\KONTROLER_TRANSPORTA.X\delay.c
+[v _delayus_variable delayus_variable `uc  1 e 1 0 ]
+"75 C:\Users\eldar\Desktop\LINIJA 5 Transport materijala\fw\v1.02_controller_radna\KONTROLER_TRANSPORTA.X\trans_ctrl.h
+[v _clock_tick_100ms clock_tick_100ms `uc  1 e 1 0 ]
+"76
+[v _clock_tick_500ms clock_tick_500ms `uc  1 e 1 0 ]
+"77
+[v _clock_tick_1s clock_tick_1s `uc  1 e 1 0 ]
+"78
+[v _clock_tick_2s clock_tick_2s `uc  1 e 1 0 ]
+"79
+[v _anin_tmr anin_tmr `uc  1 e 1 0 ]
+"80
+[v _dout_tmr dout_tmr `uc  1 e 1 0 ]
+"81
+[v _anout_tmr anout_tmr `uc  1 e 1 0 ]
+"82
+[v _sigout_tmr sigout_tmr `uc  1 e 1 0 ]
+"83
+[v _test_cnt test_cnt `uc  1 e 1 0 ]
+"84
+[v _temp temp `uc  1 e 1 0 ]
+"88
+[v _error_display_pcnt error_display_pcnt `uc  1 e 1 0 ]
+"89
+[v _feeder1_pcnt feeder1_pcnt `uc  1 e 1 0 ]
+"90
+[v _feeder2_pcnt feeder2_pcnt `uc  1 e 1 0 ]
+"91
+[v _feeder3_pcnt feeder3_pcnt `uc  1 e 1 0 ]
+"92
+[v _feeder4_pcnt feeder4_pcnt `uc  1 e 1 0 ]
+"93
+[v _feeder5_pcnt feeder5_pcnt `uc  1 e 1 0 ]
+"94
+[v _feeder_coex_pcnt feeder_coex_pcnt `uc  1 e 1 0 ]
+"95
+[v _vp1_pcnt vp1_pcnt `uc  1 e 1 0 ]
+"96
+[v _an_in_pcnt an_in_pcnt `uc  1 e 1 0 ]
+"97
+[v _relay_pcnt relay_pcnt `uc  1 e 1 0 ]
+"98
+[v _sigout_pcnt sigout_pcnt `uc  1 e 1 0 ]
+"99
+[v _vp1_cl_pcnt vp1_cl_pcnt `uc  1 e 1 0 ]
+"100
+[v _cyc1_pcnt cyc1_pcnt `uc  1 e 1 0 ]
+"104
+[v _vp1_tmr vp1_tmr `ui  1 e 2 0 ]
+"105
+[v _mill_shutdown_delay_tmr mill_shutdown_delay_tmr `ui  1 e 2 0 ]
+"106
+[v _piston_tmr piston_tmr `ui  1 e 2 0 ]
+"107
+[v _max_charging_tmr max_charging_tmr `ui  1 e 2 0 ]
+"108
+[v _error_display_tmr error_display_tmr `ui  1 e 2 0 ]
+"109
+[v _feeder4_charging_tmr feeder4_charging_tmr `ui  1 e 2 0 ]
+"110
+[v _feeder2_cleaning_piston_tmr feeder2_cleaning_piston_tmr `ui  1 e 2 0 ]
+"111
+[v _feeder_state_change_tmr feeder_state_change_tmr `ui  1 e 2 0 ]
+"112
+[v _vp1_control_delay_tmr vp1_control_delay_tmr `ui  1 e 2 0 ]
+"113
+[v _feeder1_control_delay_tmr feeder1_control_delay_tmr `ui  1 e 2 0 ]
+"114
+[v _feeder2_control_delay_tmr feeder2_control_delay_tmr `ui  1 e 2 0 ]
+"115
+[v _feeder3_control_delay_tmr feeder3_control_delay_tmr `ui  1 e 2 0 ]
+"116
+[v _feeder4_control_delay_tmr feeder4_control_delay_tmr `ui  1 e 2 0 ]
+"117
+[v _feeder5_control_delay_tmr feeder5_control_delay_tmr `ui  1 e 2 0 ]
+"118
+[v _feeder_coex_control_delay_tmr feeder_coex_control_delay_tmr `ui  1 e 2 0 ]
+"122
+[v _vp1_delay_time vp1_delay_time `ui  1 e 2 0 ]
+"123
+[v _vp1_production_speed vp1_production_speed `ui  1 e 2 0 ]
+"124
+[v _vp1_idle_speed vp1_idle_speed `ui  1 e 2 0 ]
+"125
+[v _max_charging_time max_charging_time `ui  1 e 2 0 ]
+"126
+[v _mill_shutdown_delay mill_shutdown_delay `ui  1 e 2 0 ]
+"127
+[v _feeder4_charging_time feeder4_charging_time `ui  1 e 2 0 ]
+"128
+[v _vp1_cleaning_cycles vp1_cleaning_cycles `ui  1 e 2 0 ]
+"129
+[v _vp1_cleaning_cnt vp1_cleaning_cnt `ui  1 e 2 0 ]
+"130
+[v _an0_out an0_out `ui  1 e 2 0 ]
+[v _an1_out an1_out `ui  1 e 2 0 ]
+"142
+[v _timer timer `E2108  1 e 1 0 ]
+"146
+[v _vacum_pump1_state vacum_pump1_state `E2125  1 e 1 0 ]
+"150
+[v _activ_unit activ_unit `E2132  1 e 1 0 ]
+"154
+[v _feeder1_state feeder1_state `E2141  1 e 1 0 ]
+"158
+[v _feeder2_state feeder2_state `E2147  1 e 1 0 ]
+"162
+[v _feeder3_state feeder3_state `E2153  1 e 1 0 ]
+"166
+[v _feeder4_state feeder4_state `E2159  1 e 1 0 ]
+"170
+[v _feeder5_state feeder5_state `E2165  1 e 1 0 ]
+"174
+[v _feeder_coex_state feeder_coex_state `E2171  1 e 1 0 ]
+[s S79 . 1 `uc 1 b0 1 0 :1:0 
+`uc 1 b1 1 0 :1:1 
+`uc 1 b2 1 0 :1:2 
+`uc 1 b3 1 0 :1:3 
+`uc 1 b4 1 0 :1:4 
+`uc 1 b5 1 0 :1:5 
+`uc 1 b6 1 0 :1:6 
+`uc 1 b7 1 0 :1:7 
+]
+"180
+[u S88 _BYTE 1 `uc 1 _byte 1 0 `S79 1 . 1 0 ]
+[v _timer_flags1 timer_flags1 `S88  1 e 1 0 ]
+"198
+[v _timer_flags2 timer_flags2 `S88  1 e 1 0 ]
+"214
+[v _timer_flags3 timer_flags3 `S88  1 e 1 0 ]
+"224
+[v _systeml_flags1 systeml_flags1 `S88  1 e 1 0 ]
+"239
+[v _system_flags2 system_flags2 `S88  1 e 1 0 ]
+"249
+[v _vacum_pump1_flags1 vacum_pump1_flags1 `S88  1 e 1 0 ]
+"273
+[v _vacum_pump1_flags2 vacum_pump1_flags2 `S88  1 e 1 0 ]
+"290
+[v _cyclon_flags1 cyclon_flags1 `S88  1 e 1 0 ]
+"299
+[v _feeder1_flags1 feeder1_flags1 `S88  1 e 1 0 ]
+"312
+[v _feeder2_flags1 feeder2_flags1 `S88  1 e 1 0 ]
+"325
+[v _feeder3_flags1 feeder3_flags1 `S88  1 e 1 0 ]
+"338
+[v _feeder4_flags1 feeder4_flags1 `S88  1 e 1 0 ]
+"351
+[v _feeder5_flags1 feeder5_flags1 `S88  1 e 1 0 ]
+"364
+[v _feeder_coex_flags1 feeder_coex_flags1 `S88  1 e 1 0 ]
+"377
+[v _taster_flags1 taster_flags1 `S88  1 e 1 0 ]
+"407
+[v _taster_flags2 taster_flags2 `S88  1 e 1 0 ]
+"418
+[v _input_0_7 input_0_7 `S88  1 e 1 0 ]
+"438
+[v _input_8_15 input_8_15 `S88  1 e 1 0 ]
+"458
+[v _input_16_23 input_16_23 `S88  1 e 1 0 ]
+"478
+[v _input_24_31 input_24_31 `S88  1 e 1 0 ]
+"490
+[v _output_0_7 output_0_7 `S88  1 e 1 0 ]
+"518
+[v _output_8_15 output_8_15 `S88  1 e 1 0 ]
+"547
+[v _signal_0_7 signal_0_7 `S88  1 e 1 0 ]
+"575
+[v _signal_8_15 signal_8_15 `S88  1 e 1 0 ]
+"620
+[v _hc595_shift hc595_shift `S88  1 e 1 0 ]
+"92 C:\Users\eldar\Desktop\LINIJA 5 Transport materijala\fw\v1.02_controller_radna\KONTROLER_TRANSPORTA.X\trans_ctrl.c
+[v _main main `(v  1 e 0 0 ]
+{
+"114
+} 0
+"446
+[v _SetSignalOutput SetSignalOutput `(v  1 e 0 0 ]
+{
+"843
+} 0
+"404
+[v _SetRelayOutput SetRelayOutput `(v  1 e 0 0 ]
+{
+"424
+} 0
+"428
+[v _SetAnalogOutput SetAnalogOutput `(v  1 e 0 0 ]
+{
+"442
+} 0
+"1492
+[v _ProcessVacumPump1 ProcessVacumPump1 `(v  1 e 0 0 ]
+{
+"1735
+} 0
+"1399
+[v _ProcessFeederCoex ProcessFeederCoex `(v  1 e 0 0 ]
+{
+"1471
+} 0
+"1323
+[v _ProcessFeeder5 ProcessFeeder5 `(v  1 e 0 0 ]
+{
+"1395
+} 0
+"1250
+[v _ProcessFeeder4 ProcessFeeder4 `(v  1 e 0 0 ]
+{
+"1319
+} 0
+"1174
+[v _ProcessFeeder3 ProcessFeeder3 `(v  1 e 0 0 ]
+{
+"1246
+} 0
+"1079
+[v _ProcessFeeder2 ProcessFeeder2 `(v  1 e 0 0 ]
+{
+"1170
+} 0
+"1003
+[v _ProcessFeeder1 ProcessFeeder1 `(v  1 e 0 0 ]
+{
+"1075
+} 0
+"1475
+[v _ProcessCyclon1 ProcessCyclon1 `(v  1 e 0 0 ]
+{
+"1488
+} 0
+"847
+[v _SetTimer SetTimer `(v  1 e 0 0 ]
+{
+[v SetTimer@timer_for_setup timer_for_setup `i  1 p 2 2 ]
+[v SetTimer@period period `ui  1 p 2 4 ]
+"926
+} 0
+"135
+[v _InitSYS InitSYS `(v  1 e 0 0 ]
+{
+"162
+} 0
+"78 C:\Users\eldar\Desktop\LINIJA 5 Transport materijala\fw\v1.02_controller_radna\KONTROLER_TRANSPORTA.X\delay.c
+[v _DelayS DelayS `(v  1 e 0 0 ]
+{
+[v DelayS@cnt cnt `uc  1 a 1 wreg ]
+"79
+[v DelayS@i i `uc  1 a 1 7 ]
+"78
+[v DelayS@cnt cnt `uc  1 a 1 wreg ]
+[v DelayS@cnt cnt `uc  1 a 1 6 ]
+"87
+} 0
+"44
+[v _DelayMs DelayMs `(v  1 e 0 0 ]
+{
+[v DelayMs@cnt cnt `uc  1 a 1 wreg ]
+"45
+[v DelayMs@i i `uc  1 a 1 4 ]
+"44
+[v DelayMs@cnt cnt `uc  1 a 1 wreg ]
+[v DelayMs@cnt cnt `uc  1 a 1 3 ]
+"53
+} 0
+"316 C:\Users\eldar\Desktop\LINIJA 5 Transport materijala\fw\v1.02_controller_radna\KONTROLER_TRANSPORTA.X\trans_ctrl.c
+[v _CheckAnalogInput CheckAnalogInput `(v  1 e 0 0 ]
+{
+"400
+} 0
+"15 C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\Umul16.c
+[v ___wmul __wmul `(ui  1 e 2 0 ]
+{
+"17
+[v ___wmul@product product `ui  1 a 2 6 ]
+"15
+[v ___wmul@multiplier multiplier `ui  1 p 2 2 ]
+[v ___wmul@multiplicand multiplicand `ui  1 p 2 4 ]
+"53
+} 0
+"118 C:\Users\eldar\Desktop\LINIJA 5 Transport materijala\fw\v1.02_controller_radna\KONTROLER_TRANSPORTA.X\trans_ctrl.c
+[v _InitRAM InitRAM `(v  1 e 0 0 ]
+{
+"131
+} 0
+"166
+[v _CheckTimer CheckTimer `(v  1 e 0 0 ]
+{
+"245
+} 0
+"961
+[v _CheckSafety CheckSafety `(v  1 e 0 0 ]
+{
+"999
+} 0
+"249
+[v _CheckDigitalInput CheckDigitalInput `(v  1 e 0 0 ]
+{
+"312
+} 0
+"930
+[v _HC595_Shift HC595_Shift `(v  1 e 0 0 ]
+{
+"957
+} 0
+"37
+[v _timer_int timer_int `II(v  1 e 0 0 ]
+{
+"88
+} 0
+"930
+[v i1_HC595_Shift HC595_Shift `(v  1 e 0 0 ]
+{
+"957
+} 0

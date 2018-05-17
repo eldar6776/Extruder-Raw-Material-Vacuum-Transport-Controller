@@ -1,0 +1,27 @@
+_SetSignalOutput: CODE, 3477 0 619
+_ProcessFeederCoex: CODE, 3244 0 233
+_InitRAM: CODE, 5404 0 22
+_main: CODE, 5449 0 52
+_DelayS: CODE, 5385 0 19
+_CheckDigitalInput: CODE, 2322 0 225
+_DelayMs: CODE, 5426 0 23
+_SetTimer: CODE, 1860 0 159
+_HC595_Shift: CODE, 5621 0 61
+_ProcessVacumPump1: CODE, 130 0 760
+_CheckTimer: CODE, 5949 0 195
+_timer_int: CODE, 4 0 102
+__initialization: CODE, 108 0 18
+_CheckAnalogInput: CODE, 890 0 648
+_CheckSafety: CODE, 5749 0 85
+_InitSYS: CODE, 5834 0 115
+_SetRelayOutput: CODE, 5682 0 67
+i1_HC595_Shift: CODE, 5560 0 61
+___wmul: CODE, 2019 0 29
+_SetAnalogOutput: CODE, 5501 0 59
+_ProcessFeeder1: CODE, 2099 0 223
+_ProcessFeeder2: CODE, 1538 0 322
+_ProcessCyclon1: CODE, 2059 0 40
+_ProcessFeeder3: CODE, 2778 0 233
+_ProcessFeeder4: CODE, 2547 0 231
+_ProcessFeeder5: CODE, 3011 0 233
+Total: 4834
